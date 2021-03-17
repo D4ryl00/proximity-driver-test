@@ -1,15 +1,14 @@
-package com.example.nearby_test;
+package tech.berty.driverdemo;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.BertyBridge.BertyBridge;
-import com.example.BertyBridge.BertyNativeDriver;
+import tech.berty.bertybridge.BertyBridge;
+import tech.berty.bertybridge.BertyNativeDriver;
 
 import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,7 +18,7 @@ import tech.berty.bertysdk.lifecycle.UserMessageCallback;
 import tech.berty.bertysdk.lifecycle.UserSearchCallback;
 
 public class NearbyBertyNativeDriver implements BertyNativeDriver {
-    private static final String TAG = "NearbyBertyNativeDriver";
+    private static final String TAG = "bty.demo.NativeDriver";
 
     private static final String SERVICE_ID = "tech.berty.bty.nearby";
 
@@ -37,6 +36,7 @@ public class NearbyBertyNativeDriver implements BertyNativeDriver {
     private BertyDriver nearby;;
     private Context mContext;
     private Handler mainHandler;
+    private String localPID;
 
     private Map<String, Endpoint> foundMap = new ConcurrentHashMap<>();
     private Map<String, Endpoint> connectedMap = new ConcurrentHashMap<>();
@@ -145,7 +145,7 @@ public class NearbyBertyNativeDriver implements BertyNativeDriver {
             message.obj = endpointDataView;
             mainHandler.sendMessage(message);
 
-            nearby.connectTo(userName, userId, userConnectionCallback);
+            nearby.connectTo(localPID, userId, userConnectionCallback);
         }
 
         @Override
@@ -170,6 +170,7 @@ public class NearbyBertyNativeDriver implements BertyNativeDriver {
 
     @Override
     public void start(String localPID) {
+        this.localPID = localPID;
         nearby.startSharing(localPID, SERVICE_ID, userConnectionCallback);
         nearby.startSearching(SERVICE_ID, userSearchCallback);
     }

@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "nearby-test"
+rootProject.name = "driverdemo"

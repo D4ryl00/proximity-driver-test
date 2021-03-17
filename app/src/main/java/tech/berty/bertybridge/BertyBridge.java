@@ -1,17 +1,19 @@
-package com.example.BertyBridge;
+package tech.berty.bertybridge;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import tech.berty.bertysdk.util.BertyLogger;
 
 // Simulate the java/golang bridge
 public class BertyBridge {
-    private final static String TAG = "BertyBridge";
+    private final static String TAG = "bty.BertyBridge";
 
     private static String localPeerId = UUID.randomUUID().toString();
 
@@ -26,8 +28,8 @@ public class BertyBridge {
         // for testing purpose
         private static BertyNativeDriver mDriver;
         //private static final Queue<String> SentPings = new ConcurrentLinkedQueue<>();
-        private static HashMap<String, Queue<String>> mPings = new HashMap<>();
-        private static HashMap<String, Timer> mTimers = new HashMap<>();
+        private static Map<String, Queue<String>> mPings = new ConcurrentHashMap<>();
+        private static Map<String, Timer> mTimers = new ConcurrentHashMap<>();
 
         // end test purpose
 
@@ -41,21 +43,30 @@ public class BertyBridge {
                 Queue<String> pings = new ConcurrentLinkedQueue<>();
                 mPings.put(remotePID, pings);
 
-                if (UUID.fromString(localPeerId).compareTo(UUID.fromString(remotePID)) < 0) {
-                    // Only the lower PID send messages
-                    Timer timer = new Timer();
-                    TimerTask myTask = new TimerTask() {
-                        @Override
-                        public void run() {
-                            String data = getAlphaNumericString(16);
-                            BertyLogger.i(TAG, String.format("handleFoundPeer: send data=%s remotePID=%s", data, remotePID));
-                            pings.add(data);
-                            mDriver.sendToPeer(remotePID, data.getBytes());                        }
-                    };
+                try {
+                    if (UUID.fromString(localPeerId).compareTo(UUID.fromString(remotePID)) < 0) {
+                        // Only the lower PID send messages
+                        Timer timer = new Timer();
+                        TimerTask myTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                String data = getAlphaNumericString(16);
+                                BertyLogger.i(TAG, String.format("handleFoundPeer: send data=%s remotePID=%s", data, remotePID));
+                                pings.add(data);
+                                mDriver.sendToPeer(remotePID, data.getBytes());
+                            }
+                        };
 
-                    mTimers.put(remotePID, timer);
-                    timer.schedule(myTask, 0, 1000);
+                        mTimers.put(remotePID, timer);
+                        timer.schedule(myTask, 0, 1000);
+                    } else {
+                        BertyLogger.i(TAG, "handleFoundPeer: waiting for receiving ping");
+                    }
+                } catch(Exception e) {
+                    BertyLogger.e(TAG, "handleFoundPeer error", e);
                 }
+            } else {
+                BertyLogger.e(TAG, "handleFoundPeer error: driver or localPID not set");
             }
             // end test ping
 

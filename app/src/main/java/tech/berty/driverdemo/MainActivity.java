@@ -1,4 +1,4 @@
-package com.example.nearby_test;
+package tech.berty.driverdemo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,20 +12,20 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
-import com.example.BertyBridge.BertyBridge;
+import tech.berty.bertybridge.BertyBridge;
 
 import java.util.ArrayList;
 
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_CONNECTED_ENDPOINT;
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_DISCONNECTED_ENDPOINT;
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_FOUND_ENDPOINT;
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_LOST_ENDPOINT;
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_RECEIVED_MESSAGE;
-import static com.example.nearby_test.NearbyBertyNativeDriver.ACTION_SENT_MESSAGE;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_CONNECTED_ENDPOINT;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_DISCONNECTED_ENDPOINT;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_FOUND_ENDPOINT;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_LOST_ENDPOINT;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_RECEIVED_MESSAGE;
+import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_SENT_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "BertyNativeDriverUI";
+    private static final String TAG = "bty.demo.MainActivity";
 
     private RecyclerView recyclerView;
     private CustomAdapter customAdapter;

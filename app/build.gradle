@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.nearby_test"
+        applicationId "tech.berty.driverdemo"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1

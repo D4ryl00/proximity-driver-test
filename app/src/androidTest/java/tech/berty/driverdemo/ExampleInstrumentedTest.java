@@ -1,4 +1,4 @@
-package com.example.nearby_test;
+package tech.berty.driverdemo;
 
 import android.content.Context;
 

@@ -1,6 +1,5 @@
-package com.example.nearby_test;
+package tech.berty.driverdemo;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    private static final String TAG = "CustomAdapter";
+    private static final String TAG = "bty.demo.CustomAdapter";
 
     private ArrayList<EndpointDataView> localDataSet;
 
@@ -64,7 +63,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         EndpointDataView endpointDataView = localDataSet.get(position);
-        viewHolder.getTextView().setText(String.format("peerID=%s ping(received/send)=%d/%d", endpointDataView.getName(), endpointDataView.getReceivedMessages(), endpointDataView.getSentMessages()));
+        viewHolder.getTextView().setText(String.format("endpointId=%s peerID=%s ping(received/send)=%d/%d", endpointDataView.getId(), endpointDataView.getName(), endpointDataView.getReceivedMessages(), endpointDataView.getSentMessages()));
         switch (endpointDataView.getAction()) {
             case NearbyBertyNativeDriver.ACTION_FOUND_ENDPOINT:
                 viewHolder.getTextView().setTextColor(Color.BLUE);

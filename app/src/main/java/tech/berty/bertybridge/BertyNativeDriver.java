@@ -1,4 +1,4 @@
-package com.example.BertyBridge;
+package tech.berty.bertybridge;
 
 //
 
