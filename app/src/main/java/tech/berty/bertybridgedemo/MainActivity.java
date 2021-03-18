@@ -1,4 +1,4 @@
-package tech.berty.driverdemo;
+package tech.berty.bertybridgedemo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +16,12 @@ import tech.berty.bertybridge.BertyBridge;
 
 import java.util.ArrayList;
 
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_CONNECTED_ENDPOINT;
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_DISCONNECTED_ENDPOINT;
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_FOUND_ENDPOINT;
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_LOST_ENDPOINT;
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_RECEIVED_MESSAGE;
-import static tech.berty.driverdemo.NearbyBertyNativeDriver.ACTION_SENT_MESSAGE;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_CONNECTED_ENDPOINT;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_DISCONNECTED_ENDPOINT;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_FOUND_ENDPOINT;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_LOST_ENDPOINT;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_RECEIVED_MESSAGE;
+import static tech.berty.bertybridgedemo.NearbyBertyNativeDriver.ACTION_SENT_MESSAGE;
 
 public class MainActivity extends AppCompatActivity {
 

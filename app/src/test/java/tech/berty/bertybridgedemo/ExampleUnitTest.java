@@ -1,4 +1,4 @@
-package tech.berty.driverdemo;
+package tech.berty.bertybridgedemo;
 
 import org.junit.Test;
 

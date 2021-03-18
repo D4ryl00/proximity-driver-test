@@ -1,4 +1,4 @@
-package tech.berty.driverdemo;
+package tech.berty.bertybridgedemo;
 
 public class EndpointDataView {
     String name;

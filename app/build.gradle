@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "tech.berty.driverdemo"
+        applicationId "tech.berty.bertybridgedemo"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1

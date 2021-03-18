@@ -1,4 +1,4 @@
-package tech.berty.driverdemo;
+package tech.berty.bertybridgedemo;
 
 import android.graphics.Color;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package tech.berty.driverdemo;
+package tech.berty.bertybridgedemo;
 
 import android.content.Context;
 import android.os.Handler;
